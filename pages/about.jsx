@@ -1,7 +1,7 @@
-import React from "react";
+import Info from "@/components/info.component";
 
 const About = () => {
-  return <div>About</div>;
+  return <Info filename="under_construction" />;
 };
 
 export default About;

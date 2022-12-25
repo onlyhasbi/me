@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Info from "@/components/info.component";
 
 const Works = () => {
-  return (
-    <div>Works</div>
-  )
-}
+  return <Info filename="under_construction" />;
+};
 
-export default Works
+export default Works;
