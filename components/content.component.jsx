@@ -1,11 +1,8 @@
-import { useEffect } from "react";
 import TypedAnimation from "./typed.component";
 import { greeting } from "utils/greeting";
 
 const Content = () => {
-  
   return (
-    <div className="h-[28rem] flex items-center">
       <div>
         <h5 className="text-2xl mb-5 text-slate-700">{`Good ${greeting()}.`}</h5>
         <h1 className="text-5xl mb-3 relative">
@@ -16,7 +13,6 @@ const Content = () => {
         </h1>
         <h2 className="text-6xl font-bold text-slate-800">Muhammad Hasbi</h2>
       </div>
-    </div>
   );
 };
 
