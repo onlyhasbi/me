@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from 'next/link'
 import { headerList } from "@/model/header.model";
+import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (

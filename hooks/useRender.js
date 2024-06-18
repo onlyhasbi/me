@@ -3,10 +3,16 @@ export const useRender = () => {
   const [isRendered, setIsRendered] = useState(false);
 
   useEffect(() => {
+    let timeout;
     if (typeof window !== undefined) {
-      setIsRendered(true);
+      setTimeout(() => {
+        setIsRendered(true);
+      }, 750);
     }
-    return () => setIsRendered(false);
+    return () => {
+      clearTimeout(timeout);
+      setIsRendered(false);
+    };
   }, []);
 
   return { isRendered };

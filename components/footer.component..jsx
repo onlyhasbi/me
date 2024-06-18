@@ -3,19 +3,47 @@ import { footerList } from "@/model/footer.model";
 const Footer = ({ isVisible }) => {
   if (!isVisible) return null;
 
-  const linkedToStyle = 'text-slate-800'
+  const linkedToStyle = "text-slate-800 hover:underline";
 
-  const linkedTo = (name,value) => {
+  const linkedTo = (name, value) => {
     if (!value) return null;
 
-    const linkedList = {
-      Email: <a className={linkedToStyle} href={`mailto:${value}`}>{value}</a>,
-      Phone: <a className={linkedToStyle} href={`https://wa.me/62${value.slice(3, value.length)}`}>{value}</a>,
-      Location: <a className={linkedToStyle} href={`https://maps.google.com/?q=${value}`}>{value}</a>
-    }
+    const linkList = {
+      Email: (
+        <a
+          title="connect with email"
+          className={linkedToStyle}
+          target="_blank"
+          href={`mailto:${value}`} rel="noreferrer"
+        >
+          {value}
+        </a>
+      ),
+      Phone: (
+        <a
+          title="connect to whatsapp"
+          className={linkedToStyle}
+          target="_blank"
+          href={`https://wa.me/62${value
+            .substring(3, value.length)
+            .replace(/ /g, "")}`} rel="noreferrer"
+        >
+          {value}
+        </a>
+      ),
+      Location: (
+        <a
+          className={linkedToStyle}
+          target="_blank"
+          href={`https://maps.google.com/?q=Moncongloe Lappara, Moncong Loe, Maros Regency, South Sulawesi`} rel="noreferrer"
+        >
+          {value}
+        </a>
+      ),
+    };
 
-    return linkedList[name]
-  }
+    return linkList[name];
+  };
 
   return (
     <div className="flex flex-wrap lg:justify-between justify-start items-center">
@@ -27,7 +55,7 @@ const Footer = ({ isVisible }) => {
               key={name}
             >
               <h3 className="text-sm text-slate-600">{name}</h3>
-              {linkedTo(name,value)}
+              {linkedTo(name, value)}
             </div>
           );
         })}

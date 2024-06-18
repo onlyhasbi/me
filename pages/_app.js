@@ -1,10 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
+import { useRender } from "@/hooks/useRender";
 import "../styles/globals.css";
-import Layout from "../components/layout.component";
 
 export default function App({ Component, pageProps }) {
+  const { isRendered } = useRender();
+
+  if (isRendered) {
+    return <Component {...pageProps} />;
+  }
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <div className="min-h-screen flex justify-center items-center">
+      <img
+        className="block animate-spin w-8 h-8"
+        src="loading.svg"
+        alt="loading-icon"
+      />
+    </div>
   );
 }

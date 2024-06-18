@@ -1,5 +1,6 @@
 import React from "react";
 import Typed from "typed.js";
+import PropTypes from "prop-types";
 
 const TypedAnimation = ({ strings }) => {
   const typeRef = React.useRef();
@@ -22,6 +23,10 @@ const TypedAnimation = ({ strings }) => {
   }, [strings, text]);
 
   return <span ref={typeRef}></span>;
+};
+
+TypedAnimation.propTypes = {
+  strings: PropTypes.string,
 };
 
 export default TypedAnimation;
