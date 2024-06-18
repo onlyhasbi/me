@@ -1,6 +1,22 @@
 import { footerList } from "@/model/footer.model";
 
-const Footer = () => {
+const Footer = ({ isVisible }) => {
+  if (!isVisible) return null;
+
+  const linkedToStyle = 'text-slate-800'
+
+  const linkedTo = (value) => {
+    if (!value) return null;
+
+    const linkedList = {
+      Email: <a className={linkedToStyle} href={`mailto:${value}`}>{value}</a>,
+      Phone: <a className={linkedToStyle} href={`https://wa.me/62${value.slice(3, value.length)}`}>{value}</a>,
+      Location: <a className={linkedToStyle} href={`https://maps.google.com/?q=${value}`}>{value}</a>
+    }
+
+    return linkedList[value]
+  }
+
   return (
     <div className="flex flex-wrap lg:justify-between justify-start items-center">
       <div className="flex flex-wrap gap-x-10 lg:w-auto w-full md:divide-x divide-x-0 md:divide-y-0 divide-y">
@@ -11,7 +27,7 @@ const Footer = () => {
               key={name}
             >
               <h3 className="text-sm text-slate-600">{name}</h3>
-              <p className="text-slate-800">{value}</p>
+              {linkedTo(name)}
             </div>
           );
         })}
