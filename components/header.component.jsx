@@ -1,8 +1,21 @@
 import { headerList } from "@/model/header.model";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const currentPath = useRouter().pathname;
+
+  const toPath = (pathname) => {
+    if (pathname == "/") return pathname;
+    return `/${pathname}`;
+  };
+
+  const isMatch = (pathname) => {
+    if (currentPath == "/" && currentPath == pathname) return true;
+    return currentPath == `/${pathname}`;
+  };
+
   return (
     <div className="flex gap-x-8 items-center">
       <Image
@@ -16,7 +29,11 @@ const Header = () => {
       <ul className="flex gap-x-10 text-slate-700">
         {headerList.map(({ name, path }) => {
           return (
-            <Link href={`/${path}`} key={name} className="cursor-pointer">
+            <Link
+              href={toPath(path)}
+              key={name}
+              className={`cursor-pointer ${isMatch(path) ? "underline" : ""}`}
+            >
               {name}
             </Link>
           );
