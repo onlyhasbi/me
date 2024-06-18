@@ -5,7 +5,7 @@ const Footer = ({ isVisible }) => {
 
   const linkedToStyle = 'text-slate-800'
 
-  const linkedTo = (value) => {
+  const linkedTo = (name,value) => {
     if (!value) return null;
 
     const linkedList = {
@@ -14,7 +14,7 @@ const Footer = ({ isVisible }) => {
       Location: <a className={linkedToStyle} href={`https://maps.google.com/?q=${value}`}>{value}</a>
     }
 
-    return linkedList[value]
+    return linkedList[name]
   }
 
   return (
@@ -27,7 +27,7 @@ const Footer = ({ isVisible }) => {
               key={name}
             >
               <h3 className="text-sm text-slate-600">{name}</h3>
-              {linkedTo(name)}
+              {linkedTo(name,value)}
             </div>
           );
         })}
